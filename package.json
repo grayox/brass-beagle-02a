@@ -6,7 +6,10 @@
   "license": "license.txt",
   "private": true,
   "main": "service-worker.js",
-  "dependencies": {},
+  "dependencies": {
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
+  },
   "devDependencies": {
     "del": "^2.2.1",
     "gulp": "gulpjs/gulp#4.0",

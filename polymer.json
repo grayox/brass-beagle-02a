@@ -7,6 +7,21 @@
   ],
   "extraDependencies": [
     "manifest.json",
-    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
-  ]
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js",
+		"src/custom-libraries/zip-code-data.json",
+		"src/app-main/app-data.json"
+  ],
+	"builds": [{
+    "bundle": true,
+    "js": {
+			"minify": true,
+			"compile":true
+		},
+    "css": {
+			"minify": true
+		},
+    "html": {
+			"minify": true
+		}
+  }]
 }

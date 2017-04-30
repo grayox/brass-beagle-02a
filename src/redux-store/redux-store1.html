@@ -1,0 +1,240 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer-redux/polymer-redux.html">
+<link rel="import" href="redux-js.html">
+
+<link rel="import" href="../app-main/item-methods.html">
+
+<!---- >
+Youtube tutorial | https://www.youtube.com/watch?v=PahsgJn0sgU
+Source code      | https://github.com/Polymer/polycasts/blob/master/ep61-redux/redux-store.html
+<!---->
+
+<script>
+  const initialState = {
+		/** /
+    login: {
+			hasKey: false,
+			hasUserEmail: false,
+			hasUserInit: false,
+			hasParentEmail: false,
+			showPanelKey: false,
+			showPanelUserEmail: false,
+			showPanelParentEmail: false,
+			showPanelLogin: false,
+			loggedIn: false,
+		},
+		deals: {},
+		network: {},
+		settle: {},
+		trade: {},
+		/** /
+		/**/
+		viewState: 'table',
+		viewGrid: false,
+		mediaWidth: null,
+		user: null,
+  };
+  const reducer = (state, action) => {
+		// handle exceptions
+    if ( !state          ) { /*console.error( 'No state'   );*/ return initialState; }
+    if ( !action         ) { /*console.error( 'No action'  );*/ return initialState; }
+    if ( !action.type    ) { /*console.error( 'No type'    );*/ return initialState; }
+    if ( !action.payload ) { /*console.error( 'No payload' );*/ return initialState; }
+		const payload = action.payload;
+		const type    = action.type;
+		// handle action types
+    switch (type) {
+			case 'LOGIN':
+				return initialState;
+				break;
+			case 'LOGOUT':
+				return initialState;
+				break;
+			case 'USER_LOCAL':
+				var userLocal = payload.userLocal;
+				// Prep data
+				var detail = {
+					method: 'save',
+					entity: 'user-data',
+					data: {
+						userLocal: userLocal,
+					},
+				};
+				// Save data
+				var ajax = document.createElement('item-methods');
+        ajax.method(detail); //this.fire('item-method', detail);
+				// Update state
+				return Object.assign({}, state, {
+					//userLocal : payload.userLocal ,
+					userLocal : userLocal , // Can shorten reference because of above code
+				});
+				break;
+			case 'MEDIA_WIDTH':
+				return Object.assign({}, state, {
+					mediaWidth : payload.mediaWidth ,
+				});
+				break;
+			case 'VIEWSTATE':
+				return Object.assign({}, state, {
+					viewState : payload.viewState ,
+					viewGrid  : payload.viewGrid  ,
+				});
+				break;
+			/** /
+			case 'VIEW_GRID':
+				var viewState = 'grid' ;
+				var viewGrid  = true   ;
+        return Object.assign({}, state, {
+					viewState : viewState ,
+					viewGrid  : viewGrid  ,
+				});
+				break;
+			case 'VIEW_TABLE':
+				var viewState = 'table' ;
+				var viewGrid  = false   ;
+        return Object.assign({}, state, {
+					viewState : viewState ,
+					viewGrid  : viewGrid  ,
+				});
+				break;
+			/** /
+			// login view
+			case 'TRY_KEY':
+			  const friends = state.friends.slice(0);
+        friends.push(action.friend);
+        return Object.assign({}, state,
+					{ friends: friends }
+				);
+				break;
+			case 'TRY_EMAIL_USER':
+			  const friends = state.friends.slice(0);
+        friends.push(action.friend);
+        return Object.assign({}, state,
+					{ friends: friends }
+				);
+				break;
+			case 'TRY_EMAIL_PARENT':
+			  const friends = state.friends.slice(0);
+        friends.push(action.friend);
+        return Object.assign({}, state,
+					{ friends: friends }
+				);
+				break;
+			case 'GET_PANEL_KEY':
+			  const friends = state.friends.slice(0);
+        friends.push(action.friend);
+        return Object.assign({}, state,
+					{ friends: friends }
+				);
+				break;
+			case 'GET_PANEL_EMAIL_USER':
+			  const friends = state.friends.slice(0);
+        friends.push(action.friend);
+        return Object.assign({}, state,
+					{ friends: friends }
+				);
+				break;
+			case 'GET_PANEL_EMAIL_PARENT':
+			  const friends = state.friends.slice(0);
+        friends.push(action.friend);
+        return Object.assign({}, state,
+					{ friends: friends }
+				);
+				break;
+			// end login view
+			/**/
+			default:
+				console.error('Unrecognized action type', type);
+				//return initialState;
+    }
+  }
+  const store = Redux.createStore(reducer);
+  const ReduxBehavior = PolymerRedux(store);
+</script>
+
+
+<script>
+	
+  const AsyncActionsBehavior = {
+    actions: {
+			/** /
+      signUpWithTimeout: function(username) {
+				// In subscriber element
+			  // this.dispatch('signUpWithTimeout', username);
+				// end In subscriber element
+        return function(dispatch) {
+          dispatch({ type: 'SIGN_UP_STARTED' });
+          // Do async task
+          setTimeout(function() {
+            dispatch({
+              type: 'SIGN_UP_COMPLETE',
+              username: username
+            });
+          }, 3000);
+        }
+      }
+			/**/
+		  updateUserLocal: function(ob) {
+				var type = ob.type; // 'local' | 'remote'
+				var path = ob.path; // path to write to firebase node
+				var data = ob.data; // user returned by firebase auth
+				var payload = {};
+				switch (type) {
+					case 'local':
+						/** /
+						// In subscriber element // loggedin-view.html
+								doc.getStoredValue(path)
+									.then((response) => {
+										//console.log('user', response);
+										this.dispatch('updateUserLocal', {
+											type: 'local',
+											data: response,
+										});
+										this.loading = false;
+									});
+						// end In subscriber element
+						/**/
+						//console.log('data', data);
+						payload.userLocal = data;
+						break;
+					case 'remote':
+						/** /
+						// In subscriber element // loggedin-view.html
+						  var userLocal = this.userLocal; // account, settings, etc.
+						  var path = 'account';
+							this.dispatch('updateUserLocal', {
+								type: 'remote',
+								data: userLocal,
+								path: path,
+							});
+						// end In subscriber element
+						/**/
+						/** /
+						// Prep data
+						var detail = {
+							method: 'save',
+							entity: 'user-data',
+							data: {
+							  path: path,
+								userLocal: userLocal,
+							},
+						};
+						// Save data
+						var ajax = document.createElement('item-methods');
+						ajax.method(detail); //this.fire('item-method', detail);
+						/**/
+						path = [ 'data' , path ].join('/');
+						// writeToFirebase(path);
+						break;
+					default:
+						console.error('Unrecognized action type', type);
+						//return initialState;
+				}
+			  return {
+			    type: 'USER_DATA',
+			    payload: payload,
+			  };
+		  }, 
+		},
+	
+</script>

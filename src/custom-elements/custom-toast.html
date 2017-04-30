@@ -46,6 +46,23 @@
 	</template>
 
   <script>
+		/** /
+		// Example:
+		
+		    <link rel="import" href="../custom-elements/custom-toast.html">
+		    <custom-toast id="toast"></custom-toast>
+		    ...
+		      this.showToast({
+		      	//text: 'Success. Thanks! Please login!',
+		      	text: 'Success',
+		      	type: 'success',
+		      });
+		    	...
+		    showToast: function(ob) {
+		    	var toast = this.$.toast;
+		    	toast.show(ob);
+		    },
+		/**/
     (function() {
       'use strict';
       Polymer({
@@ -74,12 +91,14 @@
         },	
 				_computeColor: function(type) {
 					var ob = {
+					//            Color Combinations 
 					//            background      border-color    text
 						dark    : { bg: null      , bc: '#323232' , text: 'white' } ,
 					//blue    : { bg: 'blue'    , bc: 'blue'    , text: 'white' } ,
 					//blue    : { bg: '#00baff' , bc: '#66d6ff' , text: 'black' } ,
 					//blue    : { bg: '#00baff' , bc: '#005e80' , text: 'black' } ,
-					  blue    : { bg: '#00baff' , bc: '#0083b3' , text: 'black' } ,
+					//blue    : { bg: '#00baff' , bc: '#0083b3' , text: 'black' } ,
+					  blue    : { bg: '#00baff' , bc: '#0083b3' , text: 'white' } ,
 					//blue    : { bg: '#2f96b4' , bc: '#2f96b4' , text: 'white' } , // https://github.com/CodeSeven/toastr/blob/master/toastr.scss
 					//green   : { bg: 'green'   , bc: 'green'   , text: 'white' } ,
 					//green   : { bg: '#0bdb00' , bc: '#0bdb00' , text: 'white' } ,
@@ -99,12 +118,12 @@
 					//red     : { bg: '#fb0000' , bc: '#ff4d4d' , text: 'white' } ,
 					//red     : { bg: '#bd362f' , bc: '#bd362f' , text: 'white' } , // https://github.com/CodeSeven/toastr/blob/master/toastr.scss
 					};
-					ob.plain               = ob.dark;
-					ob.info                = ob.blue;
-					ob.success             = ob.green;
-					ob.warning = ob.orange = ob.yellow;
-					ob.danger  = ob.error  = ob.red;
-					var out = ob[type];
+					ob.plain               = ob.dark   ;
+					ob.info                = ob.blue   ;
+					ob.success             = ob.green  ;
+					ob.warning = ob.orange = ob.yellow ;
+					ob.danger  = ob.error  = ob.red    ;
+					var out    = ob[type]              ;
 					/** /
 					// No icons, per:
 					// https://material.io/guidelines/components/snackbars-toasts.html#snackbars-toasts-usage

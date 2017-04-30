@@ -222,9 +222,10 @@
 			paper-input {
 				--paper-input-container: {
 					display: inline-block;
+					margin-left: 2em;
 					width: 13em;
 					/** /
-					margin-left: 1em;
+					width: auto;
 					/**/
 				}
 				--paper-input-container-input: {
@@ -239,9 +240,9 @@
 				}			
 			}
 			
-			.wide paper-input {
+			paper-input.wide {
 				--paper-input-container: {
-					width: 100%;
+					width: 95%;
 				}
 			}
 			
@@ -259,10 +260,19 @@
 				}
 			}
 			
-			.horizontal > div.wide {
+			/**/
+			.wide {
 				width: 100%;
-				padding-left: 1em;
 			}
+			
+			/** /
+			.horizontal {
+				/** /
+				padding-left: 1em;
+				width: 100%;
+				/** /
+			}
+			/**/
     	.horizontal {
 				@apply(--layout-horizontal);
 				/** /
@@ -273,6 +283,9 @@
 			}
 	  	.vertical {
 				@apply(--layout-vertical);
+				/** /
+				margin: auto 1em;
+				/**/
 			}
 		</style>
 		<style>

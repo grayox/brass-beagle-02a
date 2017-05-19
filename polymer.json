@@ -1,21 +1,33 @@
 {
   "entrypoint": "index.html",
   "shell": "src/app-main/app-main.html",
-  "includeDependencies": [
-		"favicon.ico",
-    "images/**/*"
-  ],
+	"lint": {
+    "rules": ["polymer-1"]
+  },
   "extraDependencies": [
+		"favicon.ico",
+    "images/**/*",
     "manifest.json",
     "bower_components/webcomponentsjs/webcomponents-lite.min.js",
 		"src/custom-libraries/zip-code-data.json",
 		"src/app-main/app-data.json"
   ],
 	"builds": [{
+    "name": "bundled",
     "bundle": true,
     "js": {
-			"minify": true,
-			"compile":true
+			"minify": true
+		},
+    "css": {
+			"minify": true
+		},
+    "html": {
+			"minify": true
+		}
+	},{
+    "name": "unbundled",
+    "js": {
+			"minify": true
 		},
     "css": {
 			"minify": true

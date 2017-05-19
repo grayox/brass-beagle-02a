@@ -15,10 +15,11 @@
 		"databaseUrl": "https://green-comet.firebaseio.com/",
 		"apiKey": "AIzaSyBOqawzjd994lNbsCTb6hzDZ7wI7yFNw5o"
 	},
-	"comment-pages": "Reminder: After editing pages, manually edit loggedin-view.html to match pages order sequence",
+	"comment-pages": "Reminder: After editing 'pages' property, manually edit loggedin-view.html (2 places: imports, neon-animated-pages) to match pages order sequence",
 	"pages": [
-		{ "name": "Receive" , "icon": "communication:call-received" } ,
-		{ "name": "Send"    , "icon": "communication:call-made"     }
+		{ "name": "Dashboard" , "icon": "dashboard"                   } ,
+		{ "name": "Receive"   , "icon": "communication:call-received" } ,
+		{ "name": "Send"      , "icon": "communication:call-made"     }
 	],
 	"entities": {
 		"user-remote": {

@@ -177,8 +177,18 @@ Source code      | https://github.com/Polymer/polycasts/blob/master/ep61-redux/r
     reducer,
     Redux.applyMiddleware(ReduxThunk.default)
   );
-  const ReduxBehavior = PolymerRedux(store);
-  const AsyncActionsBehavior = {
+  
+	
+	//const ReduxBehavior = PolymerRedux(store);
+	// https://github.com/Polymer/polymer-cli/issues/556
+  /**
+  * Redux behavior
+  *
+  * @polymerBehavior
+  */
+  const ReduxBehavior = Object.assign({}, PolymerRedux(store));
+	
+	const AsyncActionsBehavior = {
     actions: {
 			/** /
 			// https://www.youtube.com/watch?v=y2FxAT1u8pU&list=PLNYkxOF6rcIDdS7HWIC_BYRunV6MHs5xo&index=1

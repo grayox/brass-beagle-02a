@@ -23,6 +23,7 @@ using squared paper-items as menu buttons that extend all the way to the edge
 <link rel="import" href="../app-head/dialog-margin-zip.html">
 <link rel="import" href="../app-head/dialog-margin-category.html">
 
+<link rel="import" href="../app-views/view-dashboard/view-dashboard.html">
 <link rel="import" href="../app-views/view-send/view-send.html">
 <link rel="import" href="../app-views/view-receive/view-receive.html">
 <!---- >
@@ -226,6 +227,15 @@ using squared paper-items as menu buttons that extend all the way to the edge
 													 selected-attribute="visible"
 													 xon-iron-select="_onIronSelect"
 													 >
+				<!---->
+				<view-dashboard id="view-dashboard"
+										    entry-animation="slide-from-right-animation"
+									      exit-animation="slide-left-animation"
+									      xmedia-width="[[mediaWidth]]"
+									      user="[[user]]"
+									      loading="[[loading]]"
+									      >
+				</view-dashboard>
 				<!---->
 				<view-receive id="view-receive"
 										  entry-animation="slide-from-right-animation"

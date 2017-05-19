@@ -13,6 +13,7 @@
 <link rel="import" href="../../bower_components/iron-icons/image-icons.html">
 
 <link rel="import" href="../custom-styles/paper-listbox-styles.html">
+<link rel="import" href="../custom-elements/label-badge.html">
 
 <dom-module id="margin-content">
   <template>
@@ -93,21 +94,26 @@
 										xsecondary-progress="80"
 										>
 		</paper-progress>
-		  <paper-item disabled
-									xcenter-justified xflex
-									xcenter-center
-									flex horizontal layout center center-justified
-									>
-		    <span>
-		  	  [[userBalances.net]]
-					<paper-badge xfor="balance"
-											 xlabel="3"
-											 label="[[userAvailableLeadsCount]]"
-											 hidden$="[[!userAvailableLeadsCount]]"
-											 >
-					</paper-badge>
-		    </span>
-		  </paper-item>
+		<paper-item disabled
+							  xcenter-justified xflex
+								xcenter-center
+								flex horizontal layout center center-justified
+								>
+			<span>
+				[[userBalances.net]]
+				<paper-badge xfor="balance"
+										 xlabel="3"
+										 label="[[userAvailableLeadsCount]]"
+										 hidden$="[[!userAvailableLeadsCount]]"
+										 >
+				</paper-badge>
+			</span>
+		</paper-item>
+		<label-badge value="15"
+								 label="k"
+								 description="Revenue"
+								 >
+		</label-badge>
 		<!---- >
 		<div class="spacer"></div>
 		<!---->

@@ -65,3 +65,20 @@ bower install
    d. Begin with PSK-2
 	 e. Add dashboard components, paper drawer panel, minimizer, as described
 	 f. Fix build error by starting with PSK-2 (zero build errors) and building incrementally
+	 
+### v02a
+1. Broken by running `polymer build`
+
+### v03
+1. PSK2 plus added gage progressbar.js
+
+### v04
+1. Cloned Vaadin-Board-Demo.
+2. Added features.
+3. Added Vaadin Valo Theme
+
+### v05
+1. TODO: Merge v02a into v04
+   a. Preserve routing structure
+	 b. Preserve Vaadin Board
+   c. Guard against introducing `polymer build` errors
